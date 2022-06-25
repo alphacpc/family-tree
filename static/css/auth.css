@@ -1,37 +1,105 @@
 .divContainerAuth{
-    background: yellowgreen;
     min-height: 100vh;
 }
 
-/* .divContainerAuth.divRegister{
-    flex-direction: row-reverse !important;
-} */
 
 
 /* ***************** */
 /* ***** FORM ***** */
 /* *************** */
 .divForm{
-    background: turquoise;
+    background: #FFF;
     flex: 1;
     justify-content: center;
 }
 
 
-.divForm form input{
+.divForm form input,
+.divForm form button{
     border: none;
     outline: 0;
+    background: #F6FBF4;
+    border-radius: 30px;
+    padding: 15px 0;
+    padding-left: 20px;
 }
+
+.divForm form button{
+    background: #000000;
+    color: #FFF;
+}
+
+
+/* ******* DIV IMG ******* */
+.divForm .divImg{
+    height: 30vh;
+    justify-content: center;
+}
+
+.divForm .divImg img{
+    height: 100%;
+}
+
+
+/* ******* DIV FOOTER ******* */
 
 .divForm .divFooter{
     justify-content: space-around;
 }
+
+.divForm .divFooter a{
+    justify-content: space-around;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+}
+
+.divForm .divFooter a img{
+    height: 100%;
+    margin-right: 20px;
+}   
+
+.link-github{
+    background: #F6FBF4;
+}
+.link-trello{
+    background: #37E2D5;
+}
+.link-flask{
+    background: #F9F2ED;
+}
+.link-redis{
+    background: #371B58;
+}
+.link-neo4j{
+    background: #5FD068;
+}
+
 
 
 /* **************************** */
 /* ***** BACKGROUND INFO ***** */
 /* ************************** */
 .divBackgroundInfo{
-    background: linear-gradient(to left, #00000086, #00000074);
+    background: linear-gradient(to top, #000000a3, #00000098), url('./../images/banner.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
     flex: 3;
+    justify-content: center;
 }
+
+.divBackgroundInfo h1,
+.divBackgroundInfo p,
+.divBackgroundInfo h3{
+    color: #FFF;
+}
+
+
+.divBackgroundInfo h1{
+    font-size: 100px;
+}
+
+.divBackgroundInfo h3{
+    font-size: 45px;
+}
+

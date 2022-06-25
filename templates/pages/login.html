@@ -7,30 +7,53 @@
     <div class="divContainerAuth divLogin dis-flex">
         
         <div class="divForm pd-20 dis-flex dis-flex-col">
-            <div class="divImg">
-                Connexion
+            <div class="divImg dis-flex">
+                <img src="{{ url_for('static', filename='images/draw.png')}}" alt="avatar authentification">
             </div>
             
             <form class="mg-top-20 dis-flex dis-flex-col">
                 <input type="text" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="email" placeholder="Adresse electronique">
                 <input type="password" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="mdp" placeholder="Mot de passe">
+                <button type="submit" class="letter-spacing mg-bottom-20 ft-15 br-4 pd-10 ft-bold">se connecter</button>
             </form>
             
             <div class="divRedirect mg-bottom-20">
-                <p class="letter-spacing ft-20">Vous n'avez pas de compte ! <a href="/a">s'inscrire</a></p>
+                <p class="letter-spacing ft-15">Vous n'avez pas de compte ! <a href="/a" class="ft-bold ft-20" style="color: #F05;">s'inscrire</a></p>
             </div>
             
-            <div class="divFooter dis-flex">
-                <a href="#" class="letter-spacing">Github</a>
-                <a href="#" class="letter-spacing">Neo4j</a>
-                <a href="#" class="letter-spacing">Flask</a>
-                <a href="#" class="letter-spacing">Redis</a>
-                <a href="#" class="letter-spacing">Trello</a>
+            <div class="divFooter dis-flex dis-flex-col">
+                <a href="https://github.com/" target="_blank" class="letter-spacing br-4 pd-5 dis-flex mg-bottom-20 link-github">
+                    <img src="{{ url_for('static', filename='images/logo/github.svg') }}" alt="icon github">
+                    <span class="ft-bold ft-20">Github</span>
+                </a>
+
+                <a href="https://trello.com/" target="_blank" class="letter-spacing br-4 pd-5 dis-flex mg-bottom-20 link-trello">
+                    <img src="{{ url_for('static', filename='images/logo/trello.svg') }}" alt="icon trello">
+                    <span class="ft-bold ft-20" style="color: #1363DF;">Trello</span>
+                </a>
+
+                <a href="https://flask.palletsprojects.com/en/2.1.x/" target="_blank" class="letter-spacing br-4 pd-5 dis-flex mg-bottom-20 link-flask">
+                    <img src="{{ url_for('static', filename='images/logo/flask.svg') }}" alt="icon flask">
+                    <span class="ft-bold ft-20">Flask</span>
+                </a>
+
+
+                <a href="https://redis.io/" target="_blank" class="letter-spacing br-4 pd-5 dis-flex mg-bottom-20 link-redis">
+                    <img src="{{ url_for('static', filename='images/logo/redis.svg') }}" alt="icon redis">
+                    <span class="ft-bold ft-20" style="color:#F05">Redis</span>
+                </a>
+
+                <a href="https://neo4j.com/" target="_blank" class="letter-spacing br-4 pd-5 dis-flex link-neo4j">
+                    <img src="{{ url_for('static', filename='images/logo/neo4J.svg') }}" alt="icon neo4j">
+                     <span class="ft-bold ft-20">Neo4j</span>
+                 </a>
             </div>
         </div>
 
-        <div class="divBackgroundInfo pd-20">
-            <h2>Background Information</h2>
+        <div class="divBackgroundInfo pd-20 dis-flex dis-flex-col">
+            <h1 class="letter-spacing mg-bottom-20">Bienvenue !</h1>
+            <h3 class="ft-45 letter-spacing mg-bottom-20">Votre arbres généalogiques</h3>
+            <p class="ft-20 letter-spacing">Authentifiez-vous pour accéder à la platefome</p>
         </div>
     </div>
 
