@@ -14,6 +14,14 @@ def register():
 def admin():
     return render_template('pages/admin.html')
 
+@app.route('/add')
+def add():
+    return render_template('pages/add_user.html')
+
+@app.route('/archive')
+def archive():
+    return render_template('pages/archive.html')
+
 @app.route('/user')
 def user():
     return render_template('pages/home.html')

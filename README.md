@@ -1,4 +1,4 @@
-# FAMILY TREES PROJECT
+# FAMILY TREES PROJECT (encours)
 
 
 ## __**Objectif :**__ Le but du projet est de mettre en place une application permettant de gérer des arbres généalogiques

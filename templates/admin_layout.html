@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/admin.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/micro-framework.css') }}">
+    </head>
+
+    <body>
+
+
+        <nav class="navbar dis-flex pd-10">
+            
+            <div class="divUser">
+                <span class="ft-bold">Admin@sa.sn</span>
+            </div>
+            
+            <a href="#" class="ft-15 br-4">déconnexion</a>
+
+        </nav>
+
+        <div class="divContainerAdmin pd-20 dis-flex">
+            <div class="divContainer dis-flex br-4">
+
+                <div class="divLinks dis-flex dis-flex-col pd-10">
+                    <ul class="mg-top-20">
+                        <li class="dis-flex"><a href="/admin" class="pd-10 mg-bottom-10 letter-spacing active">Les utilisateurs</a></li>
+                        <li class="dis-flex"><a href="/add" class="pd-10 mg-bottom-10 letter-spacing">Ajouter un utilisateur</a></li>
+                        <li class="dis-flex"><a href="/archive" class="pd-10 letter-spacing">Archives</a></li>
+                    </ul>
+
+
+                    <div class="divInfoAdmin pd-10">
+                        <h4 class="mg-bottom-5 ft-20">Admin admin</h4>
+                        <span class="ft-15 letter-spacing">(admin)</span>
+                        <p class="mg-top-5 letter-spacing">20/12/2022</p>
+                    </div>
+                </div>
+            
+                <div class="divContent pd-10">
+                    {% block content %}{% endblock%}
+                </div>
+
+            
+
+            </div>
+        </div>
+
+
+    </body>
+</html>

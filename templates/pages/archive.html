@@ -1,25 +1,13 @@
 {% extends 'admin_layout.html'%}
 
+{% block title %}Archives{% endblock%}
+
 {% block content %}
 
 <div class="divPanelHeader dis-flex">
-    <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Liste des utilisateurs</h2>
+    <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Archives</h2>
     
-    <div class="divInteract dis-flex">
-        <div class="divFilter">
-            <label for="" class="letter-spacing ft-bold">Filtres</label>
-            <select name="" id="" class="pd-5 letter-spacing br-4">
-                <option value="">Récemment ajouté</option>
-                <option value="">Plus ancien</option>
-            </select>
-        </div>
-        
-        <form class="formSearch dis-flex">
-            <input class="pd-5 letter-spacing" type="text" placeholder="Rechercher...">
-            <button type="submit" class="pd-5">P</button>
-        </form>
-
-    </div>
+    <a href="#" class="letter-spacing ft-bold">Supprimer tous</a>
 </div>
 
 
@@ -43,8 +31,8 @@
                 <td>LeGran</td>
                 <td>leanne@gmail.com</td>
                 <td>
-                    <button class="btn-edit letter-spacing">Modifier</button>
-                    <button class="btn-archive letter-spacing">Archiver</button>
+                    <button class="btn-edit letter-spacing">Restaurer</button>
+                    <button class="btn-archive letter-spacing">Supprimer définitivement</button>
                 </td>
             </tr>
         {% endfor %}
