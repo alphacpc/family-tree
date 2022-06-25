@@ -8,7 +8,7 @@
 <nav class="navbar dis-flex pd-10">
     
     <div class="divUser">
-        <span>Admin@sa.sn</span>
+        <span class="ft-bold">Admin@sa.sn</span>
     </div>
     
     <a href="#" class="ft-15 br-4">déconnexion</a>
@@ -19,7 +19,7 @@
     <div class="divContainer dis-flex br-4">
 
         <div class="divLinks dis-flex dis-flex-col pd-10">
-            <ul>
+            <ul class="mg-top-20">
                 <li class="dis-flex"><a href="" class="pd-10 mg-bottom-10 letter-spacing active">Les utilisateurs</a></li>
                 <li class="dis-flex"><a href="" class="pd-10 mg-bottom-10 letter-spacing">Ajouter un utilisateur</a></li>
                 <li class="dis-flex"><a href="" class="pd-10 letter-spacing">Archives</a></li>
@@ -34,7 +34,25 @@
         </div>
     
         <div class="divContent pd-10">
-            <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Liste des utilisateurs</h2>
+            <div class="divPanelHeader dis-flex">
+                <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Liste des utilisateurs</h2>
+                
+                <div class="divInteract dis-flex">
+                    <div class="divFilter">
+                        <label for="" class="letter-spacing ft-bold">Filtres</label>
+                        <select name="" id="" class="pd-5 letter-spacing br-4">
+                            <option value="">Récemment ajouté</option>
+                            <option value="">Plus ancien</option>
+                        </select>
+                    </div>
+                    
+                    <form class="formSearch dis-flex">
+                        <input class="pd-5 letter-spacing" type="text" placeholder="Rechercher...">
+                        <button type="submit" class="pd-5">P</button>
+                    </form>
+
+                </div>
+            </div>
 
 
             <table aria-describedby="users-table">

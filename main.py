@@ -14,5 +14,9 @@ def register():
 def admin():
     return render_template('pages/admin.html')
 
+@app.route('/user')
+def user():
+    return render_template('pages/home.html')
+
 if __name__=='__main__':
     app.run(debug=True,port=5000)
