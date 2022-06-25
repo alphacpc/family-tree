@@ -1,0 +1,135 @@
+/* ********************** */
+/* *** DEFAULT STYLE *** */
+/* ******************** */
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+    color: #000000;
+}
+
+
+
+/* ******************** */
+/* ** LETTER-SPACING****/
+/* ****************** */
+.letter-spacing{
+    letter-spacing: 1px;
+}
+
+/* **************** */
+/***** PADDING *****/
+/* ************** */
+.pd-5{
+    padding: 5px;
+}
+
+.pd-10{
+    padding: 10px;
+}
+
+.pd-20{
+    padding: 20px;
+}
+
+
+/* **************** */
+/***** MARGING *****/
+/* ************** */
+.mg-10{
+    margin: 10px;
+}
+
+.mg-bottom-5{
+    margin-bottom: 5px;
+}
+
+.mg-bottom-10{
+    margin-bottom: 10px;
+}
+
+.mg-bottom-20{
+    margin-bottom: 20px;
+}
+
+
+
+.mg-top-5{
+    margin-top: 5px;
+}
+
+.mg-top-10{
+    margin-top: 10px;
+}
+
+.mg-top-20{
+    margin: 20px;
+}
+
+.mg-top-20{
+    margin-top: 20px;
+}
+
+/* ******************* */
+/* *** FONT-SIZE  *** */
+/* ***************** */
+.ft-15{
+    font-size: 15px;
+}
+
+.ft-20{
+    font-size: 20px;
+}
+
+.ft-25{
+    font-size: 25px;
+}
+
+.ft-35{
+    font-size: 35px;
+}
+
+.ft-45{
+    font-size: 45px;
+}
+
+.ft-bold{
+    font-weight: bold;
+}
+
+
+
+/* ******************* */
+/* ***** BORDER ***** */
+/* ***************** */
+.br-4{
+    border-radius: 4px;
+}
+
+.br-middle{
+    border-radius: 50%;
+}
+
+/* ******************** */
+/* ** DISPLAY FLEX *** */
+/* ****************** */
+.dis-flex{
+    display: flex;
+}
+
+.dis-flex-wrap{
+    flex-wrap: wrap;
+}
+
+.dis-flex-col{
+    flex-direction: column;
+}
+
+
+
+/* *************** */
+/* ***** BTN **** */
+/* ************* */

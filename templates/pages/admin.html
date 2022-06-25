@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}Interface Admin{% endblock %}
+
+{% block content %}
+
+
+<nav class="navbar dis-flex pd-10">
+    
+    <div class="divUser">
+        <span>Admin@sa.sn</span>
+    </div>
+    
+    <a href="#" class="ft-15 br-4">déconnexion</a>
+
+</nav>
+
+<div class="divContainerAdmin pd-20 dis-flex">
+    <div class="divContainer dis-flex br-4">
+
+        <div class="divLinks dis-flex dis-flex-col pd-10">
+            <ul>
+                <li class="dis-flex"><a href="" class="pd-10 mg-bottom-10 letter-spacing active">Les utilisateurs</a></li>
+                <li class="dis-flex"><a href="" class="pd-10 mg-bottom-10 letter-spacing">Ajouter un utilisateur</a></li>
+                <li class="dis-flex"><a href="" class="pd-10 letter-spacing">Archives</a></li>
+            </ul>
+
+
+            <div class="divInfoAdmin pd-10">
+                <h4 class="mg-bottom-5 ft-20">Admin admin</h4>
+                <span class="ft-15 letter-spacing">(admin)</span>
+                <p class="mg-top-5 letter-spacing">20/12/2022</p>
+            </div>
+        </div>
+    
+        <div class="divContent pd-10">
+            <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Liste des utilisateurs</h2>
+
+
+            <table aria-describedby="users-table">
+                <thead>
+                    <tr>
+                        <th>UUID</th>
+                        <th>prénom</th>
+                        <th>nom</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    {% for i in range(14) %}
+                        <tr>
+                            
+                            <td>5HGDJ87657</td>
+                            <td>Leanne Bret</td>
+                            <td>LeGran</td>
+                            <td>leanne@gmail.com</td>
+                            <td>
+                                <button class="btn-edit letter-spacing">Modifier</button>
+                                <button class="btn-archive letter-spacing">Archiver</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="divPagination dis-flex mg-top-20 mg-bottom-20">
+                <div class="dis-flex">
+                    {% for i in range(1,10)%}
+                        <span class="pd-5 br-middle">{{ i }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+       
+
+    </div>
+</div>
+
+{% endblock %}

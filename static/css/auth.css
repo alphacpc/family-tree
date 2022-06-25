@@ -1,0 +1,37 @@
+.divContainerAuth{
+    background: yellowgreen;
+    min-height: 100vh;
+}
+
+/* .divContainerAuth.divRegister{
+    flex-direction: row-reverse !important;
+} */
+
+
+/* ***************** */
+/* ***** FORM ***** */
+/* *************** */
+.divForm{
+    background: turquoise;
+    flex: 1;
+    justify-content: center;
+}
+
+
+.divForm form input{
+    border: none;
+    outline: 0;
+}
+
+.divForm .divFooter{
+    justify-content: space-around;
+}
+
+
+/* **************************** */
+/* ***** BACKGROUND INFO ***** */
+/* ************************** */
+.divBackgroundInfo{
+    background: linear-gradient(to left, #00000086, #00000074);
+    flex: 3;
+}

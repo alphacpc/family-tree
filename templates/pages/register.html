@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+    
+    <div class="divContainerAuth divRegister dis-flex">
+        <div class="divForm pd-20 dis-flex dis-flex-col">
+            <div class="divImg">
+                Inscription
+            </div>
+            
+            <form class="mg-top-20 dis-flex dis-flex-col">
+                <input type="text" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="email" placeholder="Adresse electronique">
+                <input type="password" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="mdp" placeholder="Mot de passe">
+            </form>
+            
+            <div class="divRedirect mg-bottom-20">
+                <p class="letter-spacing ft-20">Vous avez déjà un compte ! <a href="/">se connecter</a></p>
+            </div>
+            
+            <div class="divFooter dis-flex">
+                <a href="#" class="letter-spacing">Github</a>
+                <a href="#" class="letter-spacing">Neo4j</a>
+                <a href="#" class="letter-spacing">Flask</a>
+                <a href="#" class="letter-spacing">Redis</a>
+                <a href="#" class="letter-spacing">Trello</a>
+            </div>
+        </div>
+
+        <div class="divBackgroundInfo pd-20">
+            <h2>Background Information</h2>
+        </div>
+    </div>
+
+{% endblock %}
