@@ -1,0 +1,35 @@
+{% extends 'admin_layout.html' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block content %}
+    
+    <div class="divPanelHeader dis-flex">
+        <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Mon arbre généalogique</h2>
+        <span>Mis à jour de l'arbre</span>
+    </div>
+
+    <div class="divTree dis-flex dis-flex-col">
+        
+        <div class="divGrandParents divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
+            <span>Doudou</span>
+            <span>Didi</span>
+        </div>
+        <div class="divParents divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
+            <span>Didi</span>
+            <span>Didi</span>
+            <span>Didi</span>
+        </div>
+        <div class="divBoth divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
+            <span>Doudou</span>
+            <span>Didi</span>
+            <span>Mafé</span>
+            <span>Samba ndiaye</span>
+        </div>
+        <div class="divChild divTreeItem dis-flex dis-flex-wrap pd-10">
+            <span>Didi</span>
+        </div>
+        
+    </div>
+
+{% endblock %}

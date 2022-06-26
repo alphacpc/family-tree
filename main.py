@@ -26,5 +26,9 @@ def archive():
 def user():
     return render_template('pages/home.html')
 
+@app.route('/tree')
+def tree():
+    return render_template('pages/tree.html')
+
 if __name__=='__main__':
     app.run(debug=True,port=5000)

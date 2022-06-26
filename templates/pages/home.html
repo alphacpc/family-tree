@@ -1,11 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'admin_layout.html' %}
 
 {% block title %}Utilisateur{% endblock %}
 
 {% block content %}
     
-    <div class="divContainerUser">
-        <h1>Utilisateur</h1>
+    <div class="divPanelHeader dis-flex">
+        <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Informations principales</h2>
+        <span>Editer</span>
+    </div>
+
+    <div class="divContainerUsers dis-flex">
+        <form id="formInfoUser">
+            <div class="divGroupForm mg-bottom-20">
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="fname" value="Alpha amadou" disabled>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="lname" value="DIALLO" disabled >
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="phone" value="77 297 79 39" disabled>
+            </div>
+
+            <div class="divGroupForm mg-bottom-20">
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="email" value="Alphacpc@gmail.com" disabled>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="job" value="Développeur DATA" disabled>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="age" value="26" disabled>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="sex" value="Masculin" disabled>
+            </div>
+
+            <button class="pd-10 br-4">Enregistrer</button>
+        </form>
+
+        <div>
+            <img src="{{ url_for('static', filename = 'images/man.png') }}" alt="">
+        </div>
     </div>
 
 {% endblock %}

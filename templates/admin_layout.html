@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename = 'css/admin.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'css/user.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename = 'css/micro-framework.css') }}">
     </head>
 
@@ -31,6 +32,9 @@
                         <li class="dis-flex"><a href="/admin" class="pd-10 mg-bottom-10 letter-spacing active">Les utilisateurs</a></li>
                         <li class="dis-flex"><a href="/add" class="pd-10 mg-bottom-10 letter-spacing">Ajouter un utilisateur</a></li>
                         <li class="dis-flex"><a href="/archive" class="pd-10 letter-spacing">Archives</a></li>
+                        <li class="dis-flex"><a href="/user" class="pd-10 letter-spacing">Informations</a></li>
+                        <li class="dis-flex"><a href="/tree" class="pd-10 letter-spacing">Arbre généalogique</a></li>
+                        <li class="dis-flex"><a href="#" class="pd-10 letter-spacing">Chat</a></li>
                     </ul>
 
 

@@ -1,0 +1,36 @@
+.divTreeItem{
+    background: yellow;
+    justify-content: space-around;
+}
+
+.divGrandParents{
+    background: rgb(255, 174, 0);
+}
+
+.divParents{
+    background: rgb(162, 255, 0);
+}
+
+.divBoth{
+    background: rgb(0, 255, 149);
+}
+
+.divChild{
+    background: rgb(255, 64, 0);
+}
+
+
+.divTreeItem span{
+    background: rgb(0, 30, 255);
+    margin: 10px;
+    border-radius: 50%;
+    white-space: pre-line;
+    width: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 20px;
+    min-height: 90px;
+}
