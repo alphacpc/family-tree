@@ -10,19 +10,27 @@
 
     <div class="divChat dis-flex">
 
-        <div class="divChatMember dis-flex dis-flex-col">
-            <h3>Membres</h3>
+        <div class="divChatMember pd-10 dis-flex dis-flex-col">
+            <h3 class="letter-spacing mg-bottom-20">Membres</h3>
+            <div class="divMembers">
+                {% for i in range(5) %}
+                <div class="divMember mg-bottom-10 dis-flex">
+                    <img src="{{ url_for('static', filename='images/man.png') }}" alt="">
+                    <div>
+                        <h4 class="letter-spacing mg-bottom-10">Ndambé Fall</h4>
+                        <p class="letter-spacing ft-15">(Oncle)</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
 
         <div class="divChatMessage dis-flex dis-flex-col">
-            <div>
-
-            </div>
-
+            <div class="mg-bottom-20 divAllMessage br-4"></div>
 
             <form class="dis-flex">
-                <input type="text" placeholder="message">
-                <button class="">envoyer</button>
+                <input type="text" class="pd-10 letter-spacing ft-15" placeholder="Message">
+                <button class="btn-blue ft-bold pd-10 letter-spacing">envoyer</button>
             </form>
         </div>
             

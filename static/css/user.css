@@ -71,3 +71,56 @@
     min-height: 90px;
     cursor: pointer;
 }
+
+
+
+
+
+/* *********************** */
+/* ***** DIV CHAT ******* */
+/* ********************* */
+.divChat{
+    padding-bottom: 20px;
+    height: 70vh;
+}
+
+.divChatMember{
+    flex: 1;
+}
+
+.divChatMember .divMember{
+    /* background-color: aquamarine; */
+    height: 60px;
+    align-items: center;
+}
+
+.divChatMember .divMember img{
+    height: 100%;
+    margin-right: 20px;
+}
+
+
+
+.divChatMessage{
+    flex: 3;
+}
+
+.divChatMessage > div{
+    height: 62vh;
+    border: 1px solid #d1c9c969;
+}
+
+.divChatMessage form{
+    width: 100%;
+}
+
+.divChatMessage form input{
+    width: 93%;
+    outline: 0;
+    border: none;
+    background: #d1c9c969;
+}
+
+.divChatMessage form button{
+    cursor: pointer;
+}

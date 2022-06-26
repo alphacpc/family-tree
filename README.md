@@ -17,3 +17,7 @@
 ## **Page Admin**
 
 ![Capture d'écran de la page Admin](./static/images/admin.png)
+
+## **Page Chat**
+
+![Capture d'écran de la page Chat](./static/images/chat.png)
