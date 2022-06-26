@@ -1,0 +1,42 @@
+{% extends 'admin_layout.html' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block content %}
+    
+    <div class="divPanelHeader dis-flex">
+        <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Mon arbre généalogique</h2>
+        <a href="#" class="letter-spacing ft-bold btn btn-red">Mis à jour de l'arbre</a>
+    </div>
+
+    <div class="divTree dis-flex dis-flex-col">
+        
+        <div class="divGrandParents divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
+            <span>Doudou (grand-pere)</span>
+            <span>Didi (grand-mère)</span>
+        </div>
+        <div class="divParents divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
+            <span>Didi (tante)</span>
+            <span>Didi (pere)</span>
+            <span>Didi (mere)</span>
+            <span>Didi (oncle)</span>
+            <span>Mafe (oncle)</span>
+        </div>
+        <div class="divBoth divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
+            <span>Doudou (frere)</span>
+            <span>Didi (soeur)</span>
+            <span>Mafé (cousin)</span>
+            <span>Samba ndiaye (demi-frere)</span>
+        </div>
+        <div class="divChild divTreeItem dis-flex dis-flex-wrap pd-10">
+            <span>Didi (fille)</span>
+            <span>Didi (fille)</span>
+            <span>Didi (fille)</span>
+            <span>Didi (fils)</span>
+            <span>Didi (neuve)</span>
+            <span>Didi (niece)</span>
+        </div>
+        
+    </div>
+
+{% endblock %}

@@ -1,27 +1,63 @@
+
+/* ********************************* */
+/* ***** USER INFORMATION   ******* */
+/* ******************************* */
+.divContainerUser{
+    min-height: 70vh;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.divContainerUser #formInfoUser{
+    margin-left: 20px;
+}
+
+.divContainerUser #formInfoUser input{
+    margin-right: 20px;
+}
+
+
+
+.divContainerUser .divAvatar{
+    justify-content: center;
+}
+
+.divContainerUser .divAvatar img{
+    width: 80%;
+}
+
+
+/* ********************************* */
+/* ***** ARBRE GENEALOGIQUE ******* */
+/* ******************************* */
+
 .divTreeItem{
-    background: yellow;
     justify-content: space-around;
 }
 
-.divGrandParents{
-    background: rgb(255, 174, 0);
-}
-
+.divGrandParents,
 .divParents{
-    background: rgb(162, 255, 0);
+    display: none !important;
 }
 
-.divBoth{
-    background: rgb(0, 255, 149);
+.divGrandParents span{
+    background: rgb(255, 174, 0) !important;
 }
 
-.divChild{
-    background: rgb(255, 64, 0);
+.divParents span{
+    background: rgb(162, 255, 0) !important;
+}
+
+.divBoth span{
+    background: rgb(0, 255, 149) !important;
+}
+
+.divChild span{
+    background: rgb(255, 64, 0) !important;
 }
 
 
 .divTreeItem span{
-    background: rgb(0, 30, 255);
     margin: 10px;
     border-radius: 50%;
     white-space: pre-line;
@@ -33,4 +69,5 @@
     padding: 20px;
     font-size: 20px;
     min-height: 90px;
+    cursor: pointer;
 }
