@@ -2,13 +2,21 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def login():
     return render_template('pages/login.html')
 
-@app.route('/a')
+
+
+@app.route('/a', methods = ["POST", "GET"])
 def register():
     return render_template('pages/register.html')
+
+
+
+
+
 
 @app.route('/admin')
 def admin():

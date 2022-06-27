@@ -148,3 +148,23 @@
     background: rgb(1, 106, 210);
 
 }
+
+
+
+
+/* *********************** */
+/* **** DIV OVERLAY ***** */
+/* ********************* */
+.divOverlay{
+    display: none;
+}
+
+.divOverlay.show{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000000b9;
+}

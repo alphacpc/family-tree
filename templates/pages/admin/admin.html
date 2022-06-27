@@ -1,9 +1,35 @@
 {% extends 'admin_layout.html'%}
 
+
+{% block title %}Liste des utilisateurs{% endblock%}
+
+{% block overlay %}
+
+<div class="divOverlay">
+    
+    <form id="formAddUser" class="pd-20 br-4">
+        <div class="divPanelheader dis-flex mg-bottom-20">
+            <h2>Ajouter un utilisateur</h2>
+            <button class="btnQuit br-middle ft-bold">X</button>
+        </div>
+
+        <div class="divGroupForm dis-flex dis-flex-col mg-bottom-20">
+            <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="fname" placeholder="Prénom">
+            <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="lname" placeholder="Nom de famille">
+            <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="email" placeholder="Adresse email">
+            <input type="password" class="pd-10 ft-15 br-4" name="mdp" placeholder="mot de passe">
+        </div>
+
+        <button class="pd-10 br-4 letter-spacing ft-bold btn-blue" id="btnAddUser">Ajouter</button>
+
+    </form>
+
+</div>
+
+{% endblock %}
+
+
 {% block content %}
-
-
-
 
 <div class="divPanelHeader dis-flex">
     <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Liste des utilisateurs</h2>
@@ -17,7 +43,7 @@
             </select>
         </div>
         
-        <button class="ft-bold letter-spacing br-4 pd-10 btn-blue">Ajouter un utilisateur</button>
+        <button id="btnShowForm" class="ft-bold letter-spacing br-4 pd-10 btn-blue">Ajouter un utilisateur</button>
 
     </div>
 </div>
