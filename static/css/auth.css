@@ -101,7 +101,7 @@
 /* ***** BACKGROUND INFO ***** */
 /* ************************** */
 .divBackgroundInfo{
-    /* background: linear-gradient(to top, #000000a3, #00000098), url('./../images/banner.jpg') no-repeat; */
+    background: linear-gradient(to top, #000000a3, #00000098), url('./../images/banner.jpg') no-repeat;
     background-position: center;
     background-size: cover;
     flex: 3;

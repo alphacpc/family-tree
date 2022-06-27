@@ -21,9 +21,9 @@ def api_register():
 
     if fname and lname and email and password :
 
-        query = ("MERGE (p1:Person { name: $fname , lname : $lname, email : $email, password : $password })")
+        query = ("MERGE (p1:Person { name: $fname , lname : $lname, email : $email, password : $password, profile : $profile })")
 
-        session.run(query, fname = fname, lname = lname, email = email, password = password)
+        session.run(query, fname = fname, lname = lname, email = email, password = password, profile = "user")
 
         return {'message' : 'Ajout avec succès !', 'type': True}, 201
     
@@ -55,9 +55,9 @@ def api_add_user():
     if fname and lname and email and mdp :
         print("Valeur  saisi : ", fname, lname, email, mdp)
 
-        query = ("MERGE (p1:Person { name: $fname , lname : $lname, email : $email, password : $password })")
+        query = ("MERGE (p1:Person { name: $fname , lname : $lname, email : $email, password : $password, profile = $profile })")
 
-        session.run(query, fname = fname, lname = lname, email = email, password = mdp)
+        session.run(query, fname = fname, lname = lname, email = email, password = mdp, profile = "user")
 
         return {'message' : 'Utilisateur ajouté avec succès !', 'type': True}, 201
     
@@ -89,6 +89,38 @@ def api_add_member():
 
 
 
+def api_users():
+
+    result = session.run("MATCH (p:Person) RETURN p.name, p.lname, p.email, p.id")
+
+    for user in result:
+        print(user)
+
+    return {"data": 'Users loaded'}
+
+
+
+
+def api_user():
+
+    result = session.run("MATCH (p:Person {name : $name}) RETURN p.name, p.lname, p.email, p.id", name="Alpha")
+
+    for user in result:
+        print(user)
+
+    return {"data": 'Single user loaded'}
+
+
+def api_user_tree():
+    
+    result = session.run("MATCH (p:Person) RETURN p LIMIT 4")
+
+    print(result)
+
+    for user in result:
+        print(user)
+
+    return {"data": 'Tree loaded'}
 
 
 api.route('/api/register/', methods=["POST"])(api_register)
@@ -98,3 +130,10 @@ api.route('/api/login/', methods=["POST"])(api_login)
 api.route('/api/user/', methods=["POST"])(api_add_user)
 
 api.route('/api/member/', methods=["POST"])(api_add_member)
+
+api.route('/api/users')(api_users)
+
+api.route('/api/user')(api_user)
+
+api.route('/api/user/tree')(api_user_tree)
+

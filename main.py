@@ -1,5 +1,10 @@
 from flask import Flask, redirect, render_template, request
-from apis.route import api
+from apis.route import api, api_users
+from neo4j import GraphDatabase
+
+driver = GraphDatabase.driver(uri="bolt://localhost:7687", auth=("neo4j", "connect"))
+session = driver.session()
+
 
 app = Flask(__name__)
 
@@ -33,6 +38,11 @@ def register():
 @app.route('/admin', methods = ["GET", "POST"])
 def admin():
 
+    result = api_users()
+
+    print('Len', len(result))
+
+
     if request.method == 'POST':
         print('hello')
 
@@ -47,6 +57,8 @@ def admin():
 @app.route('/archive')
 def archive():
     return render_template('pages/admin/archive.html')
+
+
 
 @app.route('/user')
 def user():
@@ -63,7 +75,6 @@ def tree():
 
 
 
-
 @app.route('/chat')
 def chat():
     return render_template('pages/user/chat.html')
@@ -73,4 +84,7 @@ def chat():
 
 
 if __name__=='__main__':
+
+    result = session.run("MERGE (p:Person {name : $name, password : $password, email : $email})", name="Admin", password="neo4j", email="admin@neo.sn")
+
     app.run(debug=True,port=5000)
