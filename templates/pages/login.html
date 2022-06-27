@@ -10,8 +10,11 @@
             <div class="divImg dis-flex">
                 <img src="{{ url_for('static', filename='images/draw.png')}}" alt="avatar authentification">
             </div>
+
+            <div class="divMessageError pd-5 mg-top-20 br-4 letter-spacing"></div>
+
             
-            <form class="mg-top-20 dis-flex dis-flex-col">
+            <form class="mg-top-20 dis-flex dis-flex-col" method="POST">
                 <input type="text" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="email" placeholder="Adresse electronique">
                 <input type="password" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="mdp" placeholder="Mot de passe">
                 <button type="submit" class="letter-spacing mg-bottom-20 ft-15 br-4 pd-10 ft-bold">se connecter</button>
@@ -57,4 +60,9 @@
         </div>
     </div>
 
+{% endblock %}
+
+
+{% block script %}
+    <script src="{{ url_for('static', filename = 'js/login.js') }}"></script>
 {% endblock %}

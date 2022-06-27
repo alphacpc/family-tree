@@ -31,11 +31,9 @@
                 <div class="divLinks dis-flex dis-flex-col pd-10">
                     <ul class="mg-top-20">
                         <li class="dis-flex"><a href="/admin" class="pd-10 mg-bottom-10 letter-spacing active">Les utilisateurs</a></li>
-                        <!-- <li class="dis-flex"><a href="/add" class="pd-10 mg-bottom-10 letter-spacing">Ajouter un utilisateur</a></li> -->
                         <li class="dis-flex"><a href="/archive" class="pd-10 letter-spacing">Archives</a></li>
                         <li class="dis-flex"><a href="/user" class="pd-10 letter-spacing">Informations</a></li>
                         <li class="dis-flex"><a href="/tree" class="pd-10 letter-spacing">Arbre généalogique</a></li>
-                        <!-- <li class="dis-flex"><a href="/member" class="pd-10 letter-spacing">Membre</a></li> -->
                         <li class="dis-flex"><a href="/chat" class="pd-10 letter-spacing">Chat</a></li>
                     </ul>
 
@@ -57,5 +55,6 @@
         </div>
 
         <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+        {% block script %}{% endblock %}
     </body>
 </html>

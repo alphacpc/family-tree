@@ -9,14 +9,16 @@
             <div class="divImg dis-flex">
                 <img src="{{ url_for('static', filename='images/man.png')}}" alt="avatar authentification">
             </div>
-            
-            <form class="mg-top-20 dis-flex dis-flex-col">
-                <input type="text" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="fname" placeholder="Entrer votre prénom">
-                <input type="text" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="lname" placeholder="Entrer votre nom de famille">
-                <input type="text" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="email" placeholder="Adresse electronique">
-                <input type="password" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="mdp" placeholder="Entrer Mot de passe">
-                <input type="password" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="mdpc" placeholder="Confirmer le mot de passe">
-                <button type="submit" class="letter-spacing mg-bottom-20 ft-15 br-4 pd-10 ft-bold">enregistrer</button>
+
+            <div class="divMessageError pd-5 mg-top-20 br-4 letter-spacing"></div>
+
+            <form class="mg-top-20 dis-flex dis-flex-col" method="POST">
+                <input type="text" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="fname" id="fname" placeholder="Entrer votre prénom">
+                <input type="text" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="lname" id="lname" placeholder="Entrer votre nom de famille">
+                <input type="text" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="email" id="email" placeholder="Adresse electronique">
+                <input type="password" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="mdp" id="mdp" placeholder="Entrer Mot de passe">
+                <input type="password" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="mdpc" id="mdpc" placeholder="Confirmer le mot de passe">
+                <button type="submit" id="btnSubmitRegister" class="letter-spacing mg-bottom-20 ft-15 br-4 pd-10 ft-bold">enregistrer</button>
             </form>
             
             <div class="divRedirect mg-bottom-20">
@@ -32,4 +34,9 @@
         </div>
     </div>
 
+{% endblock %}
+
+
+{% block script %}
+    <script src="{{ url_for('static', filename = 'js/register.js') }}"></script>
 {% endblock %}

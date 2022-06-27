@@ -17,7 +17,5 @@ btnShowForm && btnShowForm.addEventListener('click', () => {
 })
 
 btnHideForm && btnHideForm.addEventListener('click', () => {
-    formOverlay.preventDefault()
     divOverlay.classList.remove('show')
 })
-

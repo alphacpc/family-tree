@@ -7,7 +7,7 @@
 
 <div class="divOverlay">
     
-    <form id="formAddUser" class="pd-20 br-4">
+    <form id="formAddUser" method="POST" class="pd-20 br-4">
         <div class="divPanelheader dis-flex mg-bottom-20">
             <h2>Ajouter un utilisateur</h2>
             <button class="btnQuit br-middle ft-bold">X</button>
@@ -65,9 +65,9 @@
             <tr>
                 
                 <td>5HGDJ87657</td>
-                <td>Leanne Bret</td>
-                <td>LeGran</td>
-                <td>leanne@gmail.com</td>
+                <td>Ndambé</td>
+                <td>Fall</td>
+                <td>ndambé@gmail.com</td>
                 <td>
                     <button class="btn-edit letter-spacing">Modifier</button>
                     <button class="btn-archive letter-spacing">Archiver</button>
@@ -87,3 +87,9 @@
 
 
 {% endblock %}
+
+
+
+{% block script %}
+    <script src="{{ url_for('static', filename = 'js/admin.js') }}"></script>
+{% endblock%}

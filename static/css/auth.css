@@ -3,6 +3,26 @@
 }
 
 
+/* ****************************** */
+/* ***** DIV MESSAGE ERROR ***** */
+/* **************************** */
+.divMessageError{
+    background: #F05;
+    display: none;
+    transition: all ease .3s;
+}
+
+.divMessageError.show{
+    display: block;
+
+}
+.divMessageError p{
+    color: #FFF;
+    text-align: center;
+    line-height: 20px;
+}
+
+
 
 /* ***************** */
 /* ***** FORM ***** */
@@ -102,4 +122,6 @@
 .divBackgroundInfo h3{
     font-size: 45px;
 }
+
+
 
