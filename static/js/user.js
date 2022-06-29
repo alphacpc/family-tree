@@ -11,6 +11,10 @@ formAddMember && formAddMember.addEventListener('submit', async(e) => {
     let lname = e.target['lname'].value.trim()
     let lien = e.target['lien'].value.trim()
 
+    let select = document.getElementById("lien");
+    let generation = select.options[select.selectedIndex].getAttribute('generation');
+    
+
     if (fname && lname && lien){
         let response = await fetch('http://localhost:5000/api/member/',{
             method: 'POST',
@@ -18,7 +22,7 @@ formAddMember && formAddMember.addEventListener('submit', async(e) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({fname, lname, lien})
+            body: JSON.stringify({fname, lname, lien, generation})
         })
 
         let data = await response.json()

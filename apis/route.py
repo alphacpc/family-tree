@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, session, redirect
-from neo4j import GraphDatabase
+from neo4j import GraphDatabase, Query
 import uuid
 from datetime import datetime
 
@@ -68,7 +68,6 @@ def api_add_user():
 
         return {'message' : 'Utilisateur ajouté avec succès !', 'type': True, 'data' : result}, 201
 
-        # return redirect('/admin')
     
     else : 
         return {'message' : 'Veuillez vérifier les informations saisies !', 'type': False}, 401
@@ -78,23 +77,35 @@ def api_add_member():
     fname = request.get_json().get('fname')
     lname = request.get_json().get('lname')
     lien = request.get_json().get('lien')
+    generation = request.get_json().get('generation')
 
 
-    if fname and lname and lien :
-        print("Valeur  saisi : ", fname, lname, lien)
+    if fname and lname and lien and generation:
+
+        print('La valeur de génération', generation)
 
         query = (
             "MATCH (p1:Person { name: $current_user})"
             "MERGE (p2:Person { name: $fname , lname : $lname })"
-            "MERGE (p1)-[:LIEN {lien : $lien}]->(p2)"
+            "CREATE (p1)-[:LIEN {lien : $lien , generation : $generation}]->(p2)"
         )
 
-        session_db.run(query, current_user = "Astou", fname = fname, lname = lname, lien = lien)
+        session_db.run(query, current_user = "Mouhamed", fname = fname, lname = lname, lien = lien, generation = generation)
 
         return {'message' : 'Membre ajouté avec succès !', 'type': True}, 201
     
     else : 
         return {'message' : 'Veuillez vérifier les informations saisies !', 'type': False}, 401
+
+
+
+def api_get_parents(name):
+    
+    query = "MATCH (p:Person {name: $name})-[rel:LIEN]->(l:Person) RETURN rel.lien as lien, rel.generation as generation , l.name as fname, l.lname as lname"
+
+    result = session_db.run(query, name = name).data()
+
+    return result
 
 
 
@@ -125,11 +136,11 @@ def api_user(email, type = "user"):
     else:
         query = "MATCH (p:Person {email : $email}) RETURN p.name, p.lname, p.email, p.profile, p.password, p.job, p.age, p.sex, p.phone, p.uuid"
 
-    result = session_db.run(query, email= email)  
-    user = result.data()
+    result = session_db.run(query, email= email).data()
 
-    if user :
-        return user[0]
+
+    if len(result) > 0 :
+        return result[0]
 
     else :
         return None

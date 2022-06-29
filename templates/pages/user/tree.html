@@ -15,21 +15,21 @@
         <div class="divGroupForm dis-flex dis-flex-col mg-bottom-20">
             <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="fname" placeholder="Prénom">
             <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="lname" placeholder="Nom de famille">
-            <select name="lien"  class="pd-10 ft-15 br-4">
+            <select name="lien" id="lien" class="pd-10 ft-15 br-4">
                 <option value="">Lien de paranté</option>
-                <option value="Grandpere">grand-pére</option>
-                <option value="Grandmere">grand-mère</option>
-                <option value="Pere">Père</option>
-                <option value="Mere">Mére</option>
-                <option value="Tante">Tante</option>
-                <option value="Oncle">Oncle</option>
-                <option value="Frere">Frére</option>
-                <option value="Soeur">Soeur</option>
-                <option value="Cousin">Cousin</option>
-                <option value="Fils">Fils</option>
-                <option value="Fille">Fille</option>
-                <option value="Niece">Niéce</option>
-                <option value="Neuve">Neuve</option>
+                <option generation="1" value="Grandpere">grand-pére</option>
+                <option generation="1" value="Grandmere">grand-mère</option>
+                <option generation="2" value="Pere">Père</option>
+                <option generation="2" value="Mere">Mére</option>
+                <option generation="2" value="Tante">Tante</option>
+                <option generation="2" value="Oncle">Oncle</option>
+                <option generation="3" value="Frere">Frére</option>
+                <option generation="3" value="Soeur">Soeur</option>
+                <option generation="3" value="Cousin(e)">Cousin(e)</option>
+                <option generation="4" value="Fils">Fils</option>
+                <option generation="4" value="Fille">Fille</option>
+                <option generation="4" value="Niece">Niéce</option>
+                <option generation="4" value="Neuve">Neuve</option>
             </select>
         </div>
 
@@ -49,32 +49,29 @@
     </div>
 
     <div class="divTree dis-flex dis-flex-col">
-        
-        <div class="divGrandParents divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
-            <span>Doudou (grand-pere)</span>
-            <span>Didi (grand-mère)</span>
-        </div>
-        <div class="divParents divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
-            <span>Didi (tante)</span>
-            <span>Didi (pere)</span>
-            <span>Didi (mere)</span>
-            <span>Didi (oncle)</span>
-            <span>Mafe (oncle)</span>
-        </div>
-        <div class="divBoth divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
-            <span>Doudou (frere)</span>
-            <span>Didi (soeur)</span>
-            <span>Mafé (cousin)</span>
-            <span>Samba ndiaye (demi-frere)</span>
-        </div>
-        <div class="divChild divTreeItem dis-flex dis-flex-wrap pd-10">
-            <span>Didi (fille)</span>
-            <span>Didi (fille)</span>
-            <span>Didi (fille)</span>
-            <span>Didi (fils)</span>
-            <span>Didi (neuve)</span>
-            <span>Didi (niece)</span>
-        </div>
+        {% for parent in parents %}
+            {% if parent.generation == '1' %}
+                <!-- <div class="divGrandParents divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10"> -->
+                    <span>{{ parent.fname}} ({{parent.lien}})</span>
+                <!-- </div> -->
+            {% elif parent.generation == '2' %}
+                <!-- <div class="divParents divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10"> -->
+                    <span>{{ parent.fname}} ({{parent.lien}})</span>
+                <!-- </div> -->
+            
+            {% elif parent.generation == '3' %}
+                <!-- <div class="divBoth divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10"> -->
+                    <span>{{ parent.fname}} ({{parent.lien}})</span>
+                <!-- </div> -->
+            
+            {%  else %}
+                <!-- <div class="divChild divTreeItem dis-flex dis-flex-wrap pd-10"> -->
+                    <span>{{ parent.fname}} ({{parent.lien}})</span>
+                <!-- </div> -->
+            {% endif %}
+
+        {% endfor %}
+
         
     </div>
 

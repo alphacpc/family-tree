@@ -65,9 +65,11 @@
 
         <div class="divAvatar dis-flex">
             {% if user.get('sex') == "M" %}
-                <img src="{{ url_for('static', filename = 'images/man.png') }}" alt="">
+                <img src="{{ url_for('static', filename = 'images/man.png') }}" alt="avatar man">
+            {% elif user.get('sex') == "F" %}
+                <img src="{{ url_for('static', filename = 'images/woman.png') }}" alt="avatar woman">
             {% else %}
-                <img src="{{ url_for('static', filename = 'images/woman.png') }}" alt="">
+                <img src="{{ url_for('static', filename = 'images/fav.png') }}" alt="default">
             {% endif %}
         </div>
     </div>

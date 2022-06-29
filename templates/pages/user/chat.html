@@ -13,12 +13,12 @@
         <div class="divChatMember pd-10 dis-flex dis-flex-col">
             <h3 class="letter-spacing mg-bottom-20">Membres</h3>
             <div class="divMembers">
-                {% for i in range(5) %}
+                {% for parent in parents %}
                 <div class="divMember mg-bottom-10 dis-flex">
                     <img src="{{ url_for('static', filename='images/man.png') }}" alt="">
                     <div>
-                        <h4 class="letter-spacing mg-bottom-10">Ndambé Fall</h4>
-                        <p class="letter-spacing ft-15">(Oncle)</p>
+                        <h4 class="letter-spacing mg-bottom-10">{{ parent.fname }}</h4>
+                        <p class="letter-spacing ft-15">({{ parent.lien }})</p>
                     </div>
                 </div>
                 {% endfor %}

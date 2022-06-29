@@ -2,7 +2,7 @@ from crypt import methods
 from email import message
 from pprint import pprint
 from flask import Flask, flash, redirect, render_template, request, session
-from apis.route import api, api_user, api_users, api_register, api_users_archiver
+from apis.route import api, api_user, api_users, api_register, api_users_archiver, api_get_parents
 from neo4j import GraphDatabase
 from flask_cors import CORS
 from datetime import date
@@ -309,8 +309,16 @@ def user():
 def tree():
 
     if 'email' in session:
+
         user = api_user(session['email'])
 
+
+        parents = api_get_parents(user['p.name'])
+
+        print(parents)
+
+
+        
         current_user = {
             'fname' : user['p.name'],
             'lname' : user['p.lname'],
@@ -321,7 +329,7 @@ def tree():
         if request.method == 'POST':
             print('hello')
 
-        return render_template('pages/user/tree.html', user = current_user, today = date.today().strftime("%d/%m/%Y"))
+        return render_template('pages/user/tree.html', user = current_user, today = date.today().strftime("%d/%m/%Y"), parents = parents)
     
     else:
         return redirect('/')
@@ -335,24 +343,24 @@ def chat():
     if 'email' in session:
         user = api_user(session['email'])
 
+        parents = api_get_parents(user['p.name'])
+
         current_user = {
                 'fname' : user['p.name'],
                 'lname' : user['p.lname'],
                 'email' : session['email'],
                 'profile' : user['p.profile'],
         }
-        return render_template('pages/user/chat.html', user = current_user, today = date.today().strftime("%d/%m/%Y"))
+        return render_template('pages/user/chat.html', user = current_user, today = date.today().strftime("%d/%m/%Y"), parents = parents)
 
     return redirect('/')
-
-
 
 
 
 if __name__=='__main__':
 
     result = session_db.run("MERGE (p:Person {name : $name, lname : $lname, password : $password, email : $email, profile : $profile})",
-        name = "Admin", lname = "DIALLO",
+        name = "Admin", lname = "admin",
         password = "neo4j", email = "admin@neo.sn", 
         profile = "admin")
 
