@@ -1,8 +1,41 @@
 let formAddUser = document.querySelector("#formAddUser")
+let tbody = document.querySelector('tbody')
+
+
+function funcGeneTr(uuid, fname, lname, email){
+    let trNoUsers = document.querySelector('.no-users')
+    trNoUsers.style.display = "None"
+
+    let tr = document.createElement('tr')
+    let td_1 = document.createElement('td')
+    let td_2 = document.createElement('td')
+    let td_3 = document.createElement('td')
+    let td_4 = document.createElement('td')
+    let td_5 = document.createElement('td')
+
+    td_1.innerText = uuid
+    td_2.innerText = fname
+    td_3.innerText = lname
+    td_4.innerText = email
+    td_5.innerHTML = `
+        <a href=""><strong>voir plus</strong></a>
+        <button class="btn-edit letter-spacing">Modifier</button>
+        <button class="btn-archive letter-spacing">Archiver</button>
+    `
+
+    tr.append(td_1)
+    tr.append(td_2)
+    tr.append(td_3)
+    tr.append(td_4)
+    tr.append(td_5)
+
+    tbody.append(tr)
+}
+
+
 
 formAddUser && formAddUser.addEventListener('submit', async(e) => {
     e.preventDefault()
-
     let fname = e.target['fname'].value.trim()
     let lname = e.target['lname'].value.trim()
     let email = e.target['email'].value.trim()
@@ -19,7 +52,12 @@ formAddUser && formAddUser.addEventListener('submit', async(e) => {
         })
 
         let data = await response.json()
-        console.log(data)
+        const email_user = await data.data[0]['p.email']
+        const lname_user = await data.data[0]['p.lname']
+        const fname_user = await data.data[0]['p.name']
+        const uuid_user = await data.data[0]['p.uuid']
+    
+        await funcGeneTr(uuid_user, fname_user, lname_user, email_user)
 
         e.target.parentElement.classList.remove('show')
         e.target['fname'].value = ""

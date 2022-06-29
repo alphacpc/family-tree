@@ -12,16 +12,16 @@
     <div class="divContainerUser dis-flex">
         <form id="formInfoUser">
             <div class="divGroupForm mg-bottom-20">
-                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="fname" value="Alpha amadou" disabled>
-                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="lname" value="DIALLO" disabled >
-                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="phone" value="77 297 79 39" disabled>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="fname" value="{{ user.get('fname') }}" disabled>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="lname" value="{{ user.get('lname')}}" disabled >
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="phone" value="{{ user.get('phone')}}" disabled>
             </div>
 
             <div class="divGroupForm mg-bottom-20">
-                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="email" value="Alphacpc@gmail.com" disabled>
-                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="job" value="Développeur DATA" disabled>
-                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="age" value="26" disabled>
-                <input type="text" class="pd-10 mg-bottom-20 mg-top-20 ft-15 br-4" name="sex" value="Masculin" disabled>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="email" value="{{ user.get('email')}}" disabled>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="job" value="{{ user.get('job')}}" disabled>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="age" value="{{ user.get('age')}}" disabled>
+                <input type="text" class="pd-10 mg-bottom-20 mg-top-20 ft-15 br-4" name="sex" value="{{ user.get('sex')}}" disabled>
             </div>
 
             <button class="pd-10 br-4 ft-bold btn-blue">Enregistrer</button>

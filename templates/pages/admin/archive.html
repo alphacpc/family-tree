@@ -7,45 +7,58 @@
 <div class="divPanelHeader dis-flex">
     <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Archives</h2>
     
-    <a href="#" class="letter-spacing ft-bold btn btn-red">Supprimer tous</a>
+    {% if users %}
+        <a href="#" class="letter-spacing ft-bold btn btn-red">Supprimer tous</a>
+    {% endif %}
+
 </div>
 
+{% if users %}
+    <table aria-describedby="users-table">
 
-<table aria-describedby="users-table">
-    <thead>
-        <tr>
-            <th>UUID</th>
-            <th>prénom</th>
-            <th>nom</th>
-            <th>Email</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        {% for i in range(14) %}
+        <thead>
             <tr>
-                
-                <td>5HGDJ87657</td>
-                <td>Leanne Bret</td>
-                <td>LeGran</td>
-                <td>leanne@gmail.com</td>
-                <td>
-                    <button class="btn-edit letter-spacing">Restaurer</button>
-                    <button class="btn-archive letter-spacing">Supprimer définitivement</button>
-                </td>
+                <th>UUID</th>
+                <th>prénom</th>
+                <th>nom</th>
+                <th>Email</th>
+                <th>Actions</th>
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
 
-<div class="divPagination dis-flex mg-top-20 mg-bottom-20">
+        <tbody>
+
+
+            {% for u in users %}
+                <tr>      
+                    <td>{{ u['p.uuid'] }}</td>
+                    <td>{{ u['p.name'] }}</td>
+                    <td>{{ u['p.lname'] }}</td>
+                    <td>{{ u['p.email'] }}</td>
+                    <td>
+                        <button class="btn-edit letter-spacing">Restaurer</button>
+                        <button class="btn-archive letter-spacing">Supprimer définitivement</button>
+                    </td>
+                </tr>
+            {% endfor %}
+
+           
+        </tbody>
+    </table>
+
+{% else %}
+    <div style="min-height: 70vh; align-items: center; justify-content: center;" class="dis-flex">
+        <p class="letter-spacing">Aucun utilisateur archivé pour le moment !</p>
+    </div>
+{% endif %}
+
+<!-- <div class="divPagination dis-flex mg-top-20 mg-bottom-20">
     <div class="dis-flex">
         {% for i in range(1,10)%}
             <span class="pd-5 br-middle">{{ i }}</span>
         {% endfor %}
     </div>
-</div>
+</div> -->
 
 
 {% endblock %}

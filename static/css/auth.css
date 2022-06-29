@@ -8,7 +8,7 @@
 /* **************************** */
 .divMessageError{
     background: #F05;
-    display: none;
+    /* display: none; */
     transition: all ease .3s;
 }
 

@@ -1,8 +1,10 @@
-from flask import Blueprint, request
+from flask import Blueprint, render_template, request, jsonify, session, redirect
 from neo4j import GraphDatabase
+import uuid
+from datetime import datetime
 
 driver = GraphDatabase.driver(uri="bolt://localhost:7687", auth=("neo4j", "connect"))
-session = driver.session()
+session_db = driver.session()
 
 
 
@@ -12,36 +14,32 @@ api = Blueprint('api', __name__)
 ###############################################################
 ######## APIs | GET | ARCHIVES | UPDATE | DELETE ##############
 ###############################################################
-def api_register():
+def api_register(fname, lname, email, password):
 
-    fname = request.get_json().get('fname')
-    lname = request.get_json().get('lname')
-    email = request.get_json().get('email')
-    password = request.get_json().get('mdp')
+    if fname and lname and email and password:
 
-    if fname and lname and email and password :
+        uid = str(uuid.uuid1())
+        
 
-        query = ("MERGE (p1:Person { name: $fname , lname : $lname, email : $email, password : $password, profile : $profile })")
+        query = ("""MERGE (p1:Person { 
+            name: $fname , lname : $lname, 
+            email : $email, password : $password, 
+            profile : $profile , visible : $visible, 
+            createdAt : $date,
+            uuid : $uid
+        })""")
 
-        session.run(query, fname = fname, lname = lname, email = email, password = password, profile = "user")
+        session_db.run(query, fname = fname, lname = lname, email = email, password = password, profile = "user", visible = 1, date = datetime.now(), uid= uid)
 
-        return {'message' : 'Ajout avec succès !', 'type': True}, 201
+        return True
     
     else : 
-        return {'message' : 'Veuillez remplire tous les champs !', 'type': False}, 401
+        return False
 
 
-
-def api_login():
-    
-    email = request.get_json().get('email')
-    password = request.get_json().get('mdp')
-
-    if email and password and len(email) > 4:
-        return {"message" : "Success !", "type": True}, 201
-    
-    else : 
-        return {"message" : "Cet utilisateur n'existe pas !", "type": False}, 401
+def api_logout():
+    session.clear()
+    return redirect('/')
         
 
 
@@ -53,13 +51,24 @@ def api_add_user():
 
 
     if fname and lname and email and mdp :
-        print("Valeur  saisi : ", fname, lname, email, mdp)
 
-        query = ("MERGE (p1:Person { name: $fname , lname : $lname, email : $email, password : $password, profile = $profile })")
+        uid = str(uuid.uuid1())
 
-        session.run(query, fname = fname, lname = lname, email = email, password = mdp, profile = "user")
+        query = ("""MERGE (:Person { 
+            name: $fname , lname : $lname, 
+            email : $email, password : $password, 
+            profile : $profile , visible : $visible, 
+            createdAt : $date,
+            uuid : $uid
+        })""")
 
-        return {'message' : 'Utilisateur ajouté avec succès !', 'type': True}, 201
+        session_db.run(query, fname = fname, lname = lname, email = email, password = mdp, profile = "user", visible = 1, date = datetime.now(), uid= uid)
+
+        result = session_db.run("MATCH (p:Person {profile : 'user', email : $email}) RETURN p.name, p.lname, p.email, p.uuid", email = email).data() 
+
+        return {'message' : 'Utilisateur ajouté avec succès !', 'type': True, 'data' : result}, 201
+
+        # return redirect('/admin')
     
     else : 
         return {'message' : 'Veuillez vérifier les informations saisies !', 'type': False}, 401
@@ -80,7 +89,7 @@ def api_add_member():
             "MERGE (p1)-[:" + lien.upper() + "]->(p2)"
         )
 
-        session.run(query, current_user = "ousmane", fname = fname, lname = lname)
+        session_db.run(query, current_user = "ousmane", fname = fname, lname = lname)
 
         return {'message' : 'Membre ajouté avec succès !', 'type': True}, 201
     
@@ -91,31 +100,49 @@ def api_add_member():
 
 def api_users():
 
-    result = session.run("MATCH (p:Person) RETURN p.name, p.lname, p.email, p.id")
+    result = session_db.run("MATCH (p:Person {profile : 'user'}) RETURN p.name, p.lname, p.email, p.uuid LIMIT 200").data() 
 
-    for user in result:
-        print(user)
-
-    return {"data": 'Users loaded'}
+    return result
 
 
 
+def api_users_archiver():
+    
+    result = session_db.run("MATCH (p:Person {profile : 'user', visible : 0}) RETURN p.name, p.lname, p.email, p.uuid LIMIT 200").data() 
 
-def api_user():
+    return result
 
-    result = session.run("MATCH (p:Person {name : $name}) RETURN p.name, p.lname, p.email, p.id", name="Alpha")
 
-    for user in result:
-        print(user)
 
-    return {"data": 'Single user loaded'}
+def api_user(email, type = "user"):
+
+    if type == "login":
+        query = "MATCH (p:Person {email : $email}) RETURN p.email, p.password, p.profile"
+    
+    elif type == "register":
+        query = "MATCH (p:Person {email : $email}) RETURN p"
+    
+    else:
+        query = "MATCH (p:Person {email : $email}) RETURN p.name, p.lname, p.email, p.profile, p.password, p.job, p.age, p.sex, p.phone"
+
+    result = session_db.run(query, email= email)  
+    user = result.data()
+
+    if user :
+        return user[0]
+
+    else :
+        return None
+
+
+
 
 
 def api_user_tree():
     
-    result = session.run("MATCH (p:Person) RETURN p LIMIT 4")
+    result = session_db.run("MATCH (p:Person) RETURN p LIMIT 4")
 
-    print(result)
+    print(result.data())
 
     for user in result:
         print(user)
@@ -123,9 +150,13 @@ def api_user_tree():
     return {"data": 'Tree loaded'}
 
 
+
+
 api.route('/api/register/', methods=["POST"])(api_register)
 
-api.route('/api/login/', methods=["POST"])(api_login)
+# api.route('/api/login/', methods=["POST"])(api_login)
+
+api.route('/api/logout/')(api_logout)
 
 api.route('/api/user/', methods=["POST"])(api_add_user)
 

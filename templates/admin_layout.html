@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="{{ url_for('static', filename = 'images/fav.png') }}" type="image/x-icon">
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{{ url_for('static', filename = 'css/admin.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename = 'css/user.css') }}">
@@ -18,10 +19,10 @@
         <nav class="navbar dis-flex pd-10">
             
             <div class="divUser">
-                <span class="ft-bold">Admin@sa.sn</span>
+                <span class="ft-bold">{{user.email}}</span>
             </div>
             
-            <a href="#" class="ft-15 br-4">déconnexion</a>
+            <a href="/api/logout/" class="ft-15 br-4">déconnexion</a>
 
         </nav>
 
@@ -30,18 +31,21 @@
 
                 <div class="divLinks dis-flex dis-flex-col pd-10">
                     <ul class="mg-top-20">
+                        {% if user.profile == 'admin' %}
                         <li class="dis-flex"><a href="/admin" class="pd-10 mg-bottom-10 letter-spacing active">Les utilisateurs</a></li>
                         <li class="dis-flex"><a href="/archive" class="pd-10 letter-spacing">Archives</a></li>
+                        {% else %}
                         <li class="dis-flex"><a href="/user" class="pd-10 letter-spacing">Informations</a></li>
                         <li class="dis-flex"><a href="/tree" class="pd-10 letter-spacing">Arbre généalogique</a></li>
                         <li class="dis-flex"><a href="/chat" class="pd-10 letter-spacing">Chat</a></li>
+                        {% endif %}
                     </ul>
 
 
                     <div class="divInfoAdmin pd-10">
-                        <h4 class="mg-bottom-5 ft-20">Admin admin</h4>
-                        <span class="ft-15 letter-spacing">(admin)</span>
-                        <p class="mg-top-5 letter-spacing">20/12/2022</p>
+                        <h4 class="mg-bottom-5 ft-20">{{ user.fname }} {{ user.lname }}</h4>
+                        <span class="ft-15 letter-spacing">({{ user.profile }})</span>
+                        <p class="mg-top-5 letter-spacing">{{ today }}</p>
                     </div>
                 </div>
             

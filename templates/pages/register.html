@@ -10,7 +10,12 @@
                 <img src="{{ url_for('static', filename='images/man.png')}}" alt="avatar authentification">
             </div>
 
-            <div class="divMessageError pd-5 mg-top-20 br-4 letter-spacing"></div>
+            {% if message %}
+            <div class="divMessageError pd-5 mg-top-20 br-4 letter-spacing">
+                <p>{{ message }}</p>
+            </div>
+            {% endif %}
+
 
             <form class="mg-top-20 dis-flex dis-flex-col" method="POST">
                 <input type="text" class="letter-spacing mg-bottom-20 ft-20 br-4 pd-10" name="fname" id="fname" placeholder="Entrer votre prénom">
@@ -38,5 +43,5 @@
 
 
 {% block script %}
-    <script src="{{ url_for('static', filename = 'js/register.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename = 'js/register.js') }}"></script> -->
 {% endblock %}

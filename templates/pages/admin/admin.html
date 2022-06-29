@@ -48,7 +48,6 @@
     </div>
 </div>
 
-
 <table aria-describedby="users-table">
     <thead>
         <tr>
@@ -61,29 +60,40 @@
     </thead>
 
     <tbody>
-        {% for i in range(14) %}
-            <tr>
-                
-                <td>5HGDJ87657</td>
-                <td>Ndambé</td>
-                <td>Fall</td>
-                <td>ndambé@gmail.com</td>
-                <td>
-                    <button class="btn-edit letter-spacing">Modifier</button>
-                    <button class="btn-archive letter-spacing">Archiver</button>
-                </td>
-            </tr>
-        {% endfor %}
+        {% if users %}
+
+            {% for u in users %}
+                <tr>
+                    
+                    <td>{{ u['p.uuid'] }}</td>
+                    <td>{{ u['p.name'] }}</td>
+                    <td>{{ u['p.lname'] }}</td>
+                    <td>{{ u['p.email'] }}</td>
+                    <td>
+                        <a href=""><strong>voir plus</strong></a>
+                        <button class="btn-edit letter-spacing">Modifier</button>
+                        <button class="btn-archive letter-spacing">Archiver</button>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        {% else %}
+            <td style="min-height: 70vh; align-items: center; justify-content: center;" class="dis-flex no-users">
+                Aucun utilisateur pour le moment !
+            </td>
+        {% endif %}
     </tbody>
 </table>
 
-<div class="divPagination dis-flex mg-top-20 mg-bottom-20">
+
+
+<!-- <div class="divPagination dis-flex mg-top-20 mg-bottom-20">
     <div class="dis-flex">
         {% for i in range(1,10)%}
             <span class="pd-5 br-middle">{{ i }}</span>
         {% endfor %}
     </div>
-</div>
+</div> -->
 
 
 {% endblock %}
