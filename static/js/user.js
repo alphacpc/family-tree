@@ -4,6 +4,10 @@ let btnEditUserSave = document?.querySelector("#btnEditUserSave")
 let btnQuite = document?.querySelector("#btnQuite")
 let divGenre = document?.querySelector('.divGenre')
 
+let btnAdd = document?.querySelector('.btn-add')
+let btnShow = document?.querySelector('.btn-show')
+let btnMask = document?.querySelector('.btn-mask')
+
 formAddMember && formAddMember.addEventListener('submit', async(e) => {
     e.preventDefault()
 
@@ -60,3 +64,19 @@ btnQuite && btnQuite.addEventListener('click', () => {
 })
 
 
+btnShow && btnShow.addEventListener('click', () => {
+    btnMask.style.display = "flex"
+    btnShow.style.display = "none"
+    document.querySelector(".divGrandParents").style.display = "flex"
+    document.querySelector(".divParents").style.display = "flex"
+
+})
+
+
+btnMask && btnMask.addEventListener('click', () => {
+    btnMask.style.display = "none"
+    btnShow.style.display = "flex"
+    document.querySelector(".divGrandParents").style.display = "none"
+    document.querySelector(".divParents").style.display = "none"
+
+})

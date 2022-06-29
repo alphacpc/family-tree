@@ -314,10 +314,27 @@ def tree():
 
 
         parents = api_get_parents(user['p.name'])
+        gen1, gen2, gen3, gen4 = [], [], [], []
 
         print(parents)
 
+        for parent in parents:
+            if parent['generation'] == "1" :
+                gen1.append(parent)
 
+            elif parent['generation'] == "2" :
+                gen2.append(parent)
+
+            elif parent['generation'] == "3" :
+                gen3.append(parent)
+
+            else :
+                gen4.append(parent)
+
+        print("generation 1", gen1)
+        print("generation 2", gen2)
+        print("generation 3", gen3)
+        print(gen4)
         
         current_user = {
             'fname' : user['p.name'],
@@ -329,7 +346,7 @@ def tree():
         if request.method == 'POST':
             print('hello')
 
-        return render_template('pages/user/tree.html', user = current_user, today = date.today().strftime("%d/%m/%Y"), parents = parents)
+        return render_template('pages/user/tree.html', user = current_user, today = date.today().strftime("%d/%m/%Y"), gen1 = gen1, gen2 = gen2, gen3 = gen3, gen4 = gen4)
     
     else:
         return redirect('/')

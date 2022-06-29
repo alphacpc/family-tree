@@ -45,33 +45,35 @@
     
     <div class="divPanelHeader dis-flex">
         <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Mon arbre généalogique</h2>
-        <button href="#" class="ft-bold letter-spacing br-4 pd-10 btn-blue" id="btnShowForm">Ajouter un membre</button>
+        <div class="dis-flex">
+            <button class="ft-bold letter-spacing br-4 pd-10 btn btn-show" id="btnShowAll">Afficher tout</button>
+            <button class="ft-bold letter-spacing br-4 pd-10 btn btn-mask" id="btnMask">Masquer</button>
+            <button class="ft-bold letter-spacing br-4 pd-10 btn btn-add" id="btnShowForm">Ajouter un membre</button>
+        </div>
     </div>
 
     <div class="divTree dis-flex dis-flex-col">
-        {% for parent in parents %}
-            {% if parent.generation == '1' %}
-                <!-- <div class="divGrandParents divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10"> -->
-                    <span>{{ parent.fname}} ({{parent.lien}})</span>
-                <!-- </div> -->
-            {% elif parent.generation == '2' %}
-                <!-- <div class="divParents divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10"> -->
-                    <span>{{ parent.fname}} ({{parent.lien}})</span>
-                <!-- </div> -->
-            
-            {% elif parent.generation == '3' %}
-                <!-- <div class="divBoth divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10"> -->
-                    <span>{{ parent.fname}} ({{parent.lien}})</span>
-                <!-- </div> -->
-            
-            {%  else %}
-                <!-- <div class="divChild divTreeItem dis-flex dis-flex-wrap pd-10"> -->
-                    <span>{{ parent.fname}} ({{parent.lien}})</span>
-                <!-- </div> -->
-            {% endif %}
-
-        {% endfor %}
-
+        
+        <div class="divGrandParents divTreeItem dis-flex-wrap pd-10 mg-bottom-10">
+            {% for parent in gen1 %}
+                <span>{{ parent.fname}} ({{parent.lien}})</span>
+            {% endfor %}
+        </div>
+        <div class="divParents divTreeItem dis-flex-wrap pd-10 mg-bottom-10">
+            {% for parent in gen2 %}
+                <span>{{ parent.fname}} ({{parent.lien}})</span>
+            {% endfor %}
+        </div>
+        <div class="divBoth divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
+            {% for parent in gen3 %}
+                <span>{{ parent.fname}} ({{parent.lien}})</span>
+            {% endfor %}
+        </div>
+        <div class="divChild divTreeItem dis-flex dis-flex-wrap pd-10">
+            {% for parent in gen4 %}
+                <span>{{ parent.fname}} ({{parent.lien}})</span>
+            {% endfor %}
+        </div>
         
     </div>
 

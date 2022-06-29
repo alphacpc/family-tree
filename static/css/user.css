@@ -55,7 +55,7 @@
 
 .divGrandParents,
 .divParents{
-    display: none !important;
+    display: none;
 }
 
 .divGrandParents span{
@@ -92,7 +92,20 @@
 
 
 
+.btn-show{
+    background: rgb(255, 174, 0) !important;
+}
 
+.btn-mask{
+    background: #F05 !important;
+    display: none;
+}
+
+.btn-add{
+    background: rgb(1, 106, 210) !important;
+    margin-left: 10px;
+    color: #FFF;
+}
 
 /* *********************** */
 /* ***** DIV CHAT ******* */
