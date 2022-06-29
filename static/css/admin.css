@@ -114,19 +114,15 @@
     text-align: center;
 }
 
-.divContent table tbody td button{
-    border: none;
-    border-radius: 4px;
-    padding: 5px;
-    cursor: pointer;
+.divContent table tbody td .btn-more{
+    background: rgb(255, 204, 0);
 }
 
-.divContent table tbody td button.btn-edit{
+.divContent table tbody td .btn-update{
     background: rgb(122, 234, 156);
 }
 
-
-.divContent table tbody td button.btn-archive{
+.divContent table tbody td .btn-archive{
     background: #f05;
 }
 
@@ -208,4 +204,18 @@
 
 .divOverlay form button.btn-blue{
     width: 100%;
+}
+
+
+
+
+/* **************************** */
+/* ***FORM UPDATE USER ******* */
+/* ************************** */
+#formUpdateUser .divForm{
+    align-items: center;
+}
+
+#formUpdateUser .divForm label{
+    width: 200px;
 }

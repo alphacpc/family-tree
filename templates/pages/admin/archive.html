@@ -36,8 +36,8 @@
                     <td>{{ u['p.lname'] }}</td>
                     <td>{{ u['p.email'] }}</td>
                     <td>
-                        <button class="btn-edit letter-spacing">Restaurer</button>
-                        <button class="btn-archive letter-spacing">Supprimer définitivement</button>
+                        <a href="/restaure?uuid={{u['p.uuid']}}" class="btn-more letter-spacing ft-15 br-4 pd-5">Restaurer</a>
+                        <a href="#" class="btn-archive letter-spacing ft-15 br-4 pd-5">Supprimer définitivement</a>
                     </td>
                 </tr>
             {% endfor %}

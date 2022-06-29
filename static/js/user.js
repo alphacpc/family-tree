@@ -1,4 +1,8 @@
-let formAddMember = document.querySelector("#formAddMember")
+let formAddMember = document?.querySelector("#formAddMember")
+let btnEditUser = document?.querySelector("#btnEditUser")
+let btnEditUserSave = document?.querySelector("#btnEditUserSave")
+let btnQuite = document?.querySelector("#btnQuite")
+let divGenre = document?.querySelector('.divGenre')
 
 formAddMember && formAddMember.addEventListener('submit', async(e) => {
     e.preventDefault()
@@ -28,3 +32,27 @@ formAddMember && formAddMember.addEventListener('submit', async(e) => {
     e.target.parentElement.classList.remove('show')
 
 })
+
+btnEditUser && btnEditUser.addEventListener('click', () => {
+    btnEditUserSave.style.display = "block"
+    btnQuite.style.display = "block"
+    btnEditUser.style.display = "none"
+    divGenre.style.display = "flex"
+    divGenre.style.flexDirection = "column"
+
+
+    document.querySelectorAll('input').forEach( input => input.removeAttribute('disabled'))
+})
+
+
+btnQuite && btnQuite.addEventListener('click', () => {
+    btnEditUserSave.style.display = "none"
+    btnQuite.style.display = "none"
+    divGenre.style.display = "none"
+    btnEditUser.style.display = "block"
+
+    document.querySelectorAll('input').forEach( input => input.setAttribute('disabled', 'true'))
+
+})
+
+

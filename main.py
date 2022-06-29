@@ -1,3 +1,4 @@
+from crypt import methods
 from email import message
 from pprint import pprint
 from flask import Flask, flash, redirect, render_template, request, session
@@ -119,7 +120,46 @@ def admin():
 
             print('hello')
 
-        return render_template('pages/admin/admin.html', user = current_user, today = date.today() , users = users)
+        return render_template('pages/admin/admin.html', user = current_user, today = date.today().strftime("%d/%m/%Y") , users = users)
+
+    else:
+        return redirect('/')
+
+
+
+
+
+
+@app.route('/edit', methods = ["GET", "POST"])
+def edit_user():
+
+    if 'email' in session:
+
+        user = api_user(session['email'])
+
+        user_uuid = request.args.get('uuid')
+        user_edit = session_db.run("MATCH (p:Person {uuid: $uuid}) RETURN p", uuid = user_uuid).data()[0]['p']
+
+        current_user = {
+            'fname' : user['p.name'],
+            'lname' : user['p.lname'],
+            'email' : session['email'],
+            'profile' : user['p.profile']
+        }
+
+        if request.method == "POST":
+            fname = request.form.get('fname')
+            lname = request.form.get('lname')
+            email = request.form.get('email')
+            mdp = request.form.get('mdp')
+
+            query = "MATCH (p:Person {uuid : $uuid}) SET p += { name : $fname, lname : $lname, email : $email, password : $password }"
+
+            session_db.run(query, uuid =user_uuid, fname = fname, lname = lname, email = email, password = mdp)
+
+            return redirect('/admin')
+
+        return render_template('pages/admin/edit_user.html', user = current_user, user_edit = user_edit, today = date.today().strftime("%d/%m/%Y"))
 
     else:
         return redirect('/')
@@ -130,8 +170,83 @@ def admin():
 
 
 
+
+@app.route('/detail', methods = ["GET", "POST"])
+def detail_user():
+
+    if 'email' in session:
+    
+        user = api_user(session['email'])
+
+        user_uuid = request.args.get('uuid')
+        user_edit = session_db.run("MATCH (p:Person {uuid: $uuid}) RETURN p", uuid = user_uuid).data()[0]['p']
+
+        print(user_edit)
+
+        current_user = {
+            'fname' : user['p.name'],
+            'lname' : user['p.lname'],
+            'email' : session['email'],
+            'profile' : user['p.profile']
+        }
+
+        if request.method == 'POST':
+            pass
+
+        return render_template('pages/admin/detail.html', user = current_user, user_edit = user_edit, today = date.today().strftime("%d/%m/%Y"))
+
+    else:
+        return redirect('/')
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route('/archive')
-def archive():
+def archive_user():
+
+    if 'email' in session:
+
+        user_uuid = request.args.get('uuid')
+        
+        session_db.run("MATCH (p:Person {uuid: $uuid}) SET p.visible = 0 RETURN p", uuid = user_uuid).data()[0]['p']
+
+        return redirect('/admin')
+    
+    return redirect('/')
+
+
+
+
+@app.route('/restaure')
+def restore_user():
+
+    if 'email' in session:
+
+        user_uuid = request.args.get('uuid')
+        
+        session_db.run("MATCH (p:Person {uuid: $uuid}) SET p.visible = 1 RETURN p", uuid = user_uuid).data()[0]['p']
+
+        return redirect('/archives')
+
+    return redirect('/')
+
+
+
+
+
+
+
+
+@app.route('/archives')
+def archives():
     if 'email' in session:
 
         user = api_user(session['email'])
@@ -145,13 +260,13 @@ def archive():
             'profile' : user['p.profile']
         }
 
-        return render_template('pages/admin/archive.html', user = current_user, today = date.today(), users = users)
+        return render_template('pages/admin/archive.html', user = current_user, today = date.today().strftime("%d/%m/%Y"), users = users)
     
     return redirect('/')
 
 
 
-@app.route('/user')
+@app.route('/user', methods=["POST", "GET"])
 def user():
 
     if 'email' in session:
@@ -167,8 +282,25 @@ def user():
             'job' : user['p.job'],
             'phone' : user['p.phone']
         }
+        
+        if request.method == "POST":
 
-        return render_template('pages/user/home.html', user = current_user, today = date.today())
+            fname = request.form.get('fname')
+            lname = request.form.get('lname')
+            phone = request.form.get('phone')
+            email = request.form.get('email')
+            job = request.form.get('job')
+            age = request.form.get('age')
+            sex = request.form.get('sex')
+
+            query = """
+                MATCH (p:Person {uuid : $uuid}) SET p += { name : $fname, lname : $lname, email : $email, phone : $phone, job : $job, age : $age, sex : $sex}
+            """
+            session_db.run(query, uuid = user['p.uuid'], fname = fname, lname = lname, phone = phone, email = email, job = job, age = age, sex = sex)
+
+            return redirect('/user')
+
+        return render_template('pages/user/home.html', user = current_user, today = date.today().strftime("%d/%m/%Y"))
     else:
         return redirect('/')
 
@@ -189,7 +321,7 @@ def tree():
         if request.method == 'POST':
             print('hello')
 
-        return render_template('pages/user/tree.html', user = current_user, today = date.today())
+        return render_template('pages/user/tree.html', user = current_user, today = date.today().strftime("%d/%m/%Y"))
     
     else:
         return redirect('/')
@@ -209,7 +341,7 @@ def chat():
                 'email' : session['email'],
                 'profile' : user['p.profile'],
         }
-        return render_template('pages/user/chat.html', user = current_user, today = date.today())
+        return render_template('pages/user/chat.html', user = current_user, today = date.today().strftime("%d/%m/%Y"))
 
     return redirect('/')
 

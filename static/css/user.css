@@ -27,6 +27,24 @@
 }
 
 
+.btn-edit{
+    background: rgb(255, 204, 0) !important;
+}
+
+.btn-quite{
+    background: #F05 !important;
+    color: #FFF;
+    display: none;
+}
+
+#btnEditUserSave{
+    display: none;
+}
+
+.divGenre{
+    display: none;
+}
+
 /* ********************************* */
 /* ***** ARBRE GENEALOGIQUE ******* */
 /* ******************************* */
@@ -89,7 +107,6 @@
 }
 
 .divChatMember .divMember{
-    /* background-color: aquamarine; */
     height: 60px;
     align-items: center;
 }
@@ -124,3 +141,5 @@
 .divChatMessage form button{
     cursor: pointer;
 }
+
+

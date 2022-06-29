@@ -70,9 +70,9 @@
                     <td>{{ u['p.lname'] }}</td>
                     <td>{{ u['p.email'] }}</td>
                     <td>
-                        <a href=""><strong>voir plus</strong></a>
-                        <button class="btn-edit letter-spacing">Modifier</button>
-                        <button class="btn-archive letter-spacing">Archiver</button>
+                        <a href="/detail?uuid={{u['p.uuid']}}" class="btn btn-more letter-spacing ft-15 pd-5 br-4">voir plus</a>
+                        <a href="/edit?uuid={{u['p.uuid']}}" class="btn btn-update letter-spacing ft-15 pd-5 br-4">Modifier</a>
+                        <a href="/archive?uuid={{u['p.uuid']}}" class="btn btn-archive letter-spacing ft-15 pd-5 br-4">Archiver</a>
                     </td>
                 </tr>
             {% endfor %}

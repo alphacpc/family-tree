@@ -86,10 +86,10 @@ def api_add_member():
         query = (
             "MATCH (p1:Person { name: $current_user})"
             "MERGE (p2:Person { name: $fname , lname : $lname })"
-            "MERGE (p1)-[:" + lien.upper() + "]->(p2)"
+            "MERGE (p1)-[:LIEN {lien : $lien}]->(p2)"
         )
 
-        session_db.run(query, current_user = "ousmane", fname = fname, lname = lname)
+        session_db.run(query, current_user = "Astou", fname = fname, lname = lname, lien = lien)
 
         return {'message' : 'Membre ajouté avec succès !', 'type': True}, 201
     
@@ -100,7 +100,7 @@ def api_add_member():
 
 def api_users():
 
-    result = session_db.run("MATCH (p:Person {profile : 'user'}) RETURN p.name, p.lname, p.email, p.uuid LIMIT 200").data() 
+    result = session_db.run("MATCH (p:Person {profile : 'user', visible : 1}) RETURN p.name, p.lname, p.email, p.uuid LIMIT 200").data() 
 
     return result
 
@@ -123,7 +123,7 @@ def api_user(email, type = "user"):
         query = "MATCH (p:Person {email : $email}) RETURN p"
     
     else:
-        query = "MATCH (p:Person {email : $email}) RETURN p.name, p.lname, p.email, p.profile, p.password, p.job, p.age, p.sex, p.phone"
+        query = "MATCH (p:Person {email : $email}) RETURN p.name, p.lname, p.email, p.profile, p.password, p.job, p.age, p.sex, p.phone, p.uuid"
 
     result = session_db.run(query, email= email)  
     user = result.data()
@@ -133,6 +133,14 @@ def api_user(email, type = "user"):
 
     else :
         return None
+
+
+
+
+
+
+
+
 
 
 

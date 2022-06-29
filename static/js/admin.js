@@ -3,8 +3,10 @@ let tbody = document.querySelector('tbody')
 
 
 function funcGeneTr(uuid, fname, lname, email){
-    let trNoUsers = document.querySelector('.no-users')
-    trNoUsers.style.display = "None"
+    
+    if(document.querySelector('.no-users')){
+        document.querySelector('.no-users').style.display = "None"
+    }
 
     let tr = document.createElement('tr')
     let td_1 = document.createElement('td')
@@ -18,9 +20,9 @@ function funcGeneTr(uuid, fname, lname, email){
     td_3.innerText = lname
     td_4.innerText = email
     td_5.innerHTML = `
-        <a href=""><strong>voir plus</strong></a>
-        <button class="btn-edit letter-spacing">Modifier</button>
-        <button class="btn-archive letter-spacing">Archiver</button>
+        <a href="/detail?uuid=${uuid}" class="btn btn-more letter-spacing ft-15 pd-5 br-4">voir plus</a>
+        <a href="#" class="btn btn-update letter-spacing ft-15 pd-5 br-4">Modifier</a>
+        <a href="/archive?uuid=${uuid}" class="btn btn-archive letter-spacing ft-15 pd-5 br-4">Archiver</a>
     `
 
     tr.append(td_1)

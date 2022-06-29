@@ -149,6 +149,11 @@
 
 }
 
+.btn{
+    cursor: pointer;
+    border: none;
+    background: none;
+}
 
 
 

@@ -1,0 +1,42 @@
+{% extends 'admin_layout.html' %}
+
+{% block title %}Editer utilisateur{% endblock %}
+
+{% block content %}
+
+
+    <div class="divPanelHeader dis-flex">
+        <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Editer {{ user_edit.get('uuid') }}</h2>
+    </div>
+
+
+    
+    <form class="pd-20 br-4" id="formUpdateUser" method="POST">
+
+        <div class="divGroupForm dis-flex dis-flex-col mg-bottom-20">
+            <div class="divForm dis-flex">
+                <label for="" class="ft-bold  letter-spacingletter-spacing">Prénom</label>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="fname" value="{{ user_edit.get('name') }}" placeholder="Prénom">
+            </div>
+
+            <div class="divForm dis-flex">
+                <label for="" class="ft-bold letter-spacing">Nom de famille</label>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="lname" value="{{ user_edit.get('lname') }}" placeholder="Nom de famille">
+            </div>
+
+            <div class="divForm dis-flex">
+                <label for="" class="ft-bold letter-spacing">Adresse electronique</label>
+                <input type="text" class="pd-10 mg-bottom-20 ft-15 br-4" name="email" value="{{ user_edit.get('email') }}" placeholder="Adresse email">
+            </div>
+
+            <div class="divForm dis-flex">
+                <label for="" class="ft-bold letter-spacing">Mot de passe</label>
+                <input type="text" class="pd-10 ft-15 br-4" name="mdp" value="{{user_edit.get('password')}}" placeholder="mot de passe">
+            </div>
+        </div>
+
+        <button class="pd-10 br-4 letter-spacing ft-bold btn-blue" id="btnAddUser">Enregister</button>
+    </form>
+
+{% endblock %}
+
