@@ -312,7 +312,7 @@ def tree():
 
         user = api_user(session['email'])
 
-
+        print(user['p.name'])
         parents = api_get_parents(user['p.name'])
         gen1, gen2, gen3, gen4 = [], [], [], []
 

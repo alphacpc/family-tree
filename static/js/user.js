@@ -11,6 +11,10 @@ let btnMask = document?.querySelector('.btn-mask')
 formAddMember && formAddMember.addEventListener('submit', async(e) => {
     e.preventDefault()
 
+    let current_user = document.querySelector('.divInfoAdmin h4').innerText.split(' ')[0]
+
+    console.log("Hello", current_user)
+
     let fname = e.target['fname'].value.trim()
     let lname = e.target['lname'].value.trim()
     let lien = e.target['lien'].value.trim()
@@ -26,7 +30,7 @@ formAddMember && formAddMember.addEventListener('submit', async(e) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({fname, lname, lien, generation})
+            body: JSON.stringify({fname, lname, lien, generation, current_user})
         })
 
         let data = await response.json()

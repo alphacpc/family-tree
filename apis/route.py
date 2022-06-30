@@ -78,6 +78,7 @@ def api_add_member():
     lname = request.get_json().get('lname')
     lien = request.get_json().get('lien')
     generation = request.get_json().get('generation')
+    current_user = request.get_json().get('current_user')
 
 
     if fname and lname and lien and generation:
@@ -90,7 +91,7 @@ def api_add_member():
             "CREATE (p1)-[:LIEN {lien : $lien , generation : $generation}]->(p2)"
         )
 
-        session_db.run(query, current_user = "Mouhamed", fname = fname, lname = lname, lien = lien, generation = generation)
+        session_db.run(query, current_user = current_user, fname = fname, lname = lname, lien = lien, generation = generation)
 
         return {'message' : 'Membre ajouté avec succès !', 'type': True}, 201
     
