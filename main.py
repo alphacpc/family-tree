@@ -1,7 +1,4 @@
-from crypt import methods
-from email import message
-from pprint import pprint
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, redirect, render_template, request, session
 from apis.route import api, api_user, api_users, api_register, api_users_archiver, api_get_parents
 from neo4j import GraphDatabase
 from flask_cors import CORS
@@ -130,6 +127,9 @@ def admin():
 
 
 
+
+
+
 @app.route('/edit', methods = ["GET", "POST"])
 def edit_user():
 
@@ -171,6 +171,10 @@ def edit_user():
 
 
 
+
+
+
+
 @app.route('/detail', methods = ["GET", "POST"])
 def detail_user():
 
@@ -181,8 +185,6 @@ def detail_user():
         user_uuid = request.args.get('uuid')
         user_edit = session_db.run("MATCH (p:Person {uuid: $uuid}) RETURN p", uuid = user_uuid).data()[0]['p']
 
-        print(user_edit)
-
         current_user = {
             'fname' : user['p.name'],
             'lname' : user['p.lname'],
@@ -190,10 +192,25 @@ def detail_user():
             'profile' : user['p.profile']
         }
 
-        if request.method == 'POST':
-            pass
+        parents = api_get_parents(user_edit['name'])
+        gen1, gen2, gen3, gen4 = [], [], [], []
 
-        return render_template('pages/admin/detail.html', user = current_user, user_edit = user_edit, today = date.today().strftime("%d/%m/%Y"))
+        print(parents)
+
+        for parent in parents:
+            if parent['generation'] == "1" :
+                gen1.append(parent)
+
+            elif parent['generation'] == "2" :
+                gen2.append(parent)
+
+            elif parent['generation'] == "3" :
+                gen3.append(parent)
+
+            else :
+                gen4.append(parent)
+
+        return render_template('pages/admin/detail.html', user = current_user, user_edit = user_edit, today = date.today().strftime("%d/%m/%Y") , gen1 = gen1, gen2 = gen2, gen3 = gen3, gen4 = gen4)
 
     else:
         return redirect('/')
@@ -225,6 +242,13 @@ def archive_user():
 
 
 
+
+
+
+
+
+
+
 @app.route('/restaure')
 def restore_user():
 
@@ -237,6 +261,9 @@ def restore_user():
         return redirect('/archives')
 
     return redirect('/')
+
+
+
 
 
 
@@ -263,6 +290,11 @@ def archives():
         return render_template('pages/admin/archive.html', user = current_user, today = date.today().strftime("%d/%m/%Y"), users = users)
     
     return redirect('/')
+
+
+
+
+
 
 
 
@@ -303,6 +335,11 @@ def user():
         return render_template('pages/user/home.html', user = current_user, today = date.today().strftime("%d/%m/%Y"))
     else:
         return redirect('/')
+
+
+
+
+
 
 
 @app.route('/tree', methods = ["GET", "POST"])
@@ -354,6 +391,10 @@ def tree():
 
 
 
+
+
+
+
 @app.route('/chat')
 def chat():
 
@@ -371,6 +412,10 @@ def chat():
         return render_template('pages/user/chat.html', user = current_user, today = date.today().strftime("%d/%m/%Y"), parents = parents)
 
     return redirect('/')
+
+
+
+
 
 
 

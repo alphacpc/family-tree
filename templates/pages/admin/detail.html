@@ -9,6 +9,30 @@
         <h2 class="ft-35 mg-bottom-20 mg-top-20 letter-spacing">Arbre Généalogique de {{ user_edit.get('name') }} {{ user_edit.get('lname') }}</h2>
     </div>
 
+    <div class="divTree dis-flex dis-flex-col">
+        
+        <div class="divGrandParents divTreeItem dis-flex-wrap pd-10 mg-bottom-10">
+            {% for parent in gen1 %}
+                <span>{{ parent.fname}} ({{parent.lien}})</span>
+            {% endfor %}
+        </div>
+        <div class="divParents divTreeItem dis-flex-wrap pd-10 mg-bottom-10">
+            {% for parent in gen2 %}
+                <span>{{ parent.fname}} ({{parent.lien}})</span>
+            {% endfor %}
+        </div>
+        <div class="divBoth divTreeItem dis-flex dis-flex-wrap pd-10 mg-bottom-10">
+            {% for parent in gen3 %}
+                <span>{{ parent.fname}} ({{parent.lien}})</span>
+            {% endfor %}
+        </div>
+        <div class="divChild divTreeItem dis-flex dis-flex-wrap pd-10">
+            {% for parent in gen4 %}
+                <span>{{ parent.fname}} ({{parent.lien}})</span>
+            {% endfor %}
+        </div>
+        
+    </div>
 
     
 

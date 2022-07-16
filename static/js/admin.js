@@ -21,7 +21,7 @@ function funcGeneTr(uuid, fname, lname, email){
     td_4.innerText = email
     td_5.innerHTML = `
         <a href="/detail?uuid=${uuid}" class="btn btn-more letter-spacing ft-15 pd-5 br-4">voir plus</a>
-        <a href="#" class="btn btn-update letter-spacing ft-15 pd-5 br-4">Modifier</a>
+        <a href="/edit?uuid=${uuid}" class="btn btn-update letter-spacing ft-15 pd-5 br-4">Modifier</a>
         <a href="/archive?uuid=${uuid}" class="btn btn-archive letter-spacing ft-15 pd-5 br-4">Archiver</a>
     `
 
