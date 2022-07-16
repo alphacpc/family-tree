@@ -1,11 +1,8 @@
-from flask import Blueprint, render_template, request, jsonify, session, redirect
-from neo4j import GraphDatabase, Query
+from flask import Blueprint, request, session, redirect
 import uuid
 from datetime import datetime
 
-driver = GraphDatabase.driver(uri="bolt://localhost:7687", auth=("neo4j", "connect"))
-session_db = driver.session()
-
+from config import session_db
 
 
 api = Blueprint('api', __name__) 
@@ -150,14 +147,6 @@ def api_user(email, type = "user"):
 
 
 
-
-
-
-
-
-
-
-
 def api_user_tree():
     
     result = session_db.run("MATCH (p:Person) RETURN p LIMIT 4")
@@ -173,8 +162,6 @@ def api_user_tree():
 
 
 api.route('/api/register/', methods=["POST"])(api_register)
-
-# api.route('/api/login/', methods=["POST"])(api_login)
 
 api.route('/api/logout/')(api_logout)
 
