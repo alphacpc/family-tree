@@ -14,5 +14,3 @@ admin.route('/archive')(archive_user)
 admin.route('/restaure')(restore_user)
 
 admin.route('/archives')(archives)
-
-

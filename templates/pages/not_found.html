@@ -1,9 +1,33 @@
 {% extends 'base.html' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Page 404{% endblock %}
 
 {% block content %}
 
-<h3>Mafe</h3>
+<div class="container404 dis-flex dis-flex-col">
+    
+    <div class="divImg">
+        <img src="{{ url_for('static', filename='images/not_found.png') }}" alt="Image 404">
+    </div>
+
+    <div class="divInf mg-top-20">
+        <h1 class="letter-spacing">Page introuvable</h1>
+        <p class="letter-spacing mg-bottom-10 mg-top-10">Le contenu demandé n'existe pas.</p>
+        <button onclick="goBack()" class="letter-spacing br-4 btn-blue pd-10">Retour en arrière</button>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block script %}
+
+<script>
+    let goBack = () => {
+        window.history.back()
+    }
+</script>
 
 {% endblock %}

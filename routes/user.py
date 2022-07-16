@@ -8,5 +8,3 @@ user.route('/user', methods=["POST", "GET"])(home)
 user.route('/tree', methods = ["GET", "POST"])(tree)
 
 user.route('/chat')(chat)
-
-
