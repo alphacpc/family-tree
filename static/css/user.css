@@ -53,8 +53,8 @@
     justify-content: space-around;
 }
 
-.divGrandParents,
-.divParents{
+.divTree:not(.admin) .divGrandParents,
+.divTree:not(.admin) .divParents{
     display: none;
 }
 
