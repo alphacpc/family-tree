@@ -3,15 +3,15 @@
 
 ## __**Objectif :**__ Le but du projet est de mettre en place une application permettant de gérer des arbres généalogiques
 
-## *Outils utilisés :* **FLASK**  **Neo4j** **Redis** **Trello**
+#### *Outils utilisés :* **FLASK** - **Neo4j** - **Trello**
 
-## *Langage de programmation :* Python |  Javascript  |  Cypher
+#### *Langage de programmation :* Python |  Javascript  |  Cypher
 
-## *Pages :* Page de connexion |  Page Administrateur  |  Page utilisateur
+#### *Pages :* Page de connexion |  Page Administrateur  |  Page utilisateur
 
-### _**Chat :**__ L'utilisateur peux envoyer, répondre et lire des messages (via le chat) à un ou plusieurs membres de sa famille.
+##### **Chat :** L'utilisateur peux envoyer, répondre et lire des messages (via le chat) à un ou plusieurs membres de sa famille.
 
-### *Dépendances du projet :* Toutes les dépendances seront mis dans le fichier requirement.txt
+#### *Dépendances du projet :* Toutes les dépendances seront mis dans le fichier requirements.txt
 
 
 ## **Page Admin**
@@ -21,3 +21,12 @@
 ## **Page Chat**
 
 ![Capture d'écran de la page Chat](./static/images/chat.png)
+
+## **Page de Connexion**
+![Capture d'écran de la page Chat](./static/images/connexion.png)
+
+
+**Remarque :** J'ai développé un mini framework css (voir dans static/css)
+
+# Version 2 du projet
+Je mettrai en place le chat
